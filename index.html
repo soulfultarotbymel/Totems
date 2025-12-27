@@ -110,12 +110,27 @@
         
         .message-container {
             display: none;
-            background: linear-gradient(135deg, #5B9AA9 0%, #D4A574 100%);
-            color: white;
-            padding: 20px;
+            background: white;
+            color: #333;
+            padding: 25px;
             border-radius: 15px;
             margin-top: 30px;
             animation: fadeIn 0.5s ease;
+            border: 4px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        
+        .message-container::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(135deg, #5B9AA9 0%, #D4A574 100%);
+            border-radius: 15px;
+            z-index: -1;
         }
         
         .message-container.show {
@@ -156,9 +171,9 @@
         
         .reset-btn-inline {
             padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
+            background: white;
+            color: #5B9AA9;
+            border: 2px solid #5B9AA9;
             border-radius: 25px;
             font-size: 1em;
             font-weight: 600;
@@ -168,7 +183,7 @@
         
         .reset-btn-inline:hover {
             transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.3);
+            background: #f0f0f0;
         }
         
         .button-group {
@@ -181,8 +196,8 @@
         
         .fb-return-btn {
             padding: 12px 30px;
-            background: white;
-            color: #5F7C4F;
+            background: linear-gradient(135deg, #5B9AA9 0%, #D4A574 100%);
+            color: white;
             text-decoration: none;
             border-radius: 25px;
             font-size: 1em;
