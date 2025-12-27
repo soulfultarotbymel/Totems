@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Card Reading - Soulful Tarot by Mel</title>
+    
+    <!-- Facebook Open Graph tags for better link preview -->
+    <meta property="og:title" content="Choose Your Daily Card - Soulful Tarot by Mel" />
+    <meta property="og:description" content="Trust your intuition and select the card calling to you. Discover your personalized message from the universe." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mellitajc220-coder.github.io/PHOTO-SELECTION/photo_choice_with_config.html" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #5B9AA9 0%, #D4A574 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .photo-option {
+            position: relative;
+            cursor: pointer;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .photo-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .photo-option.selected {
+            border-color: #87A96B;
+            transform: scale(1.05);
+        }
+        
+        .photo-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(135, 169, 107, 0.9);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .photo-label {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .message-container {
+            display: none;
+            background: linear-gradient(135deg, #5B9AA9 0%, #D4A574 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .message-container.show {
+            display: block;
+        }
+        
+        .message-container h2 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .message-container p {
+            line-height: 1.6;
+            font-size: 1em;
+        }
+        
+        .reset-btn {
+            display: none;
+            margin: 20px auto 0;
+            padding: 12px 30px;
+            background: white;
+            color: #5F7C4F;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .reset-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .reset-btn.show {
+            display: block;
+        }
+        
+        .reset-btn-inline {
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .reset-btn-inline:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .fb-return-btn {
+            padding: 12px 30px;
+            background: white;
+            color: #5F7C4F;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+        
+        .fb-return-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .photos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .fb-return-btn,
+            .reset-btn-inline {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="mainTitle">Choose Your Photo</h1>
+        <p class="subtitle" id="subtitle">Select the image that speaks to you</p>
+        
+        <div class="photos-grid">
+            <div class="photo-option" onclick="selectPhoto(1)">
+                <div class="photo-number">1</div>
+                <img src="photo1.jpg" alt="Photo 1" class="photo-image">
+                <div class="photo-label" id="label1">Option One</div>
+            </div>
+            
+            <div class="photo-option" onclick="selectPhoto(2)">
+                <div class="photo-number">2</div>
+                <img src="photo2.jpg" alt="Photo 2" class="photo-image">
+                <div class="photo-label" id="label2">Option Two</div>
+            </div>
+            
+            <div class="photo-option" onclick="selectPhoto(3)">
+                <div class="photo-number">3</div>
+                <img src="photo3.jpg" alt="Photo 3" class="photo-image">
+                <div class="photo-label" id="label3">Option Three</div>
+            </div>
+        </div>
+        
+        <div id="messageContainer" class="message-container">
+            <h2 id="messageTitle"></h2>
+            <p id="messageText"></p>
+            <div class="button-group">
+                <a href="https://www.facebook.com/groups/soulfultarotbymel/?ref=share_group_link" class="fb-return-btn">Return to Soulful Tarot by Mel</a>
+                <button class="reset-btn-inline" onclick="reset()">Choose Another Card</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var config = null;
+        
+        fetch('config.json')
+            .then(function(response) { return response.json(); })
+            .then(function(data) {
+                config = data;
+                updatePageContent();
+            })
+            .catch(function(error) {
+                console.error('Error loading config:', error);
+                useDefaultConfig();
+            });
+        
+        function updatePageContent() {
+            if (!config) return;
+            
+            document.getElementById('mainTitle').textContent = config.mainTitle;
+            document.getElementById('subtitle').textContent = config.subtitle;
+            
+            document.getElementById('label1').textContent = config.photo1.label;
+            document.getElementById('label2').textContent = config.photo2.label;
+            document.getElementById('label3').textContent = config.photo3.label;
+        }
+        
+        function useDefaultConfig() {
+            config = {
+                mainTitle: "Choose Your Photo",
+                subtitle: "Select the image that speaks to you",
+                photo1: {
+                    label: "Option One",
+                    messageTitle: "You Chose Photo 1!",
+                    messageText: "Your choice reveals a thoughtful spirit."
+                },
+                photo2: {
+                    label: "Option Two",
+                    messageTitle: "You Chose Photo 2!",
+                    messageText: "Your selection shows an adventurous heart."
+                },
+                photo3: {
+                    label: "Option Three",
+                    messageTitle: "You Chose Photo 3!",
+                    messageText: "Your pick reflects a creative soul."
+                }
+            };
+            updatePageContent();
+        }
+        
+        function selectPhoto(choice) {
+            if (!config) return;
+            
+            var options = document.querySelectorAll('.photo-option');
+            for (var i = 0; i < options.length; i++) {
+                options[i].classList.remove('selected');
+            }
+            
+            event.currentTarget.classList.add('selected');
+            
+            var photoKey = 'photo' + choice;
+            var message = config[photoKey];
+            
+            document.getElementById('messageTitle').textContent = message.messageTitle;
+            document.getElementById('messageText').textContent = message.messageText;
+            document.getElementById('messageContainer').classList.add('show');
+            
+            setTimeout(function() {
+                document.getElementById('messageContainer').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }, 100);
+        }
+        
+        function reset() {
+            var options = document.querySelectorAll('.photo-option');
+            for (var i = 0; i < options.length; i++) {
+                options[i].classList.remove('selected');
+            }
+            document.getElementById('messageContainer').classList.remove('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "mainTitle": "Choose Your Totem Animal",
+  "subtitle": "Trust your intuition, select the card that resonates the most",
+  
+  "photo1": {
+    "label": "OWL",
+    "messageTitle": "You Chose the Owl",
+    "messageText": "If the owl calls to you, you are ready to trust your inner knowing more deeply. This guide appears when you’re learning to see beyond the surface and read the truth in the quiet spaces. Its presence invites you to honour your intuition without second‑guessing."
+  },
+  
+  "photo2": {
+    "label": "HORSE",
+    "messageTitle": "You Chose the Horse",
+    "messageText": "If the horse resonates, you are stepping into a season of strength, movement, and personal freedom. This stunning ally reminds you that your power is gentlest when it’s grounded, and that you’re capable of going farther than you think. Let its steady momentum carry you forward."
+  },
+  
+  "photo3": {
+    "label": "FOX",
+    "messageTitle": "You Chose the Fox",
+    "messageText": "As the fox caught your attention, you may be navigating life with sharper instincts and creative problem‑solving. Fox energy supports you in staying adaptable, clever, and quietly confident as you move through shifting terrain. It encourages you to trust your wit and your ability to find the hidden path."
+  }
+}
